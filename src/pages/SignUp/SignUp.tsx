@@ -60,7 +60,7 @@ const SignUp = () => {
       };
       const response = await userService.cadastrar(data);
       if (response) {
-        alert("Usuário cadastrado com sucesso");
+        alert("Usuário cadastrado com sucesso, por favor faça o login");
         navigate("/login");
       }
     } catch (error) {

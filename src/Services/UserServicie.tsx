@@ -50,7 +50,6 @@ export default class UserServices {
         });
 
         // Adiciona o nome e telefone do usuário no Firestore
-        console.log("Dados a serem salvos:", dados);
         await firebase
           .firestore()
           .collection("usuarios")
