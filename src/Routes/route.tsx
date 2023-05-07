@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 // Pages
 import Login from "../pages/Login/Login";
 import ProtectedRoutes from "./ProtectedRoutes";
-import SignIn from "../pages/SignIn/SignIn";
+import SignIn from "../pages/SignUp/SignUp";
 
 const Routering = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);

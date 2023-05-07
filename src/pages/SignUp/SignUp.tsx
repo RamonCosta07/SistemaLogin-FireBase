@@ -6,7 +6,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import Button from "../../components/Button/Button";
 import Input from "../../components/Input/Input";
 // Styles
-import { Container, Form, SubContainerSign } from "./signInStyles";
+import { Container, Form, SubContainerSign } from "./signUpStyles";
 // Validadores
 import { validarEmail, validarPassword, validarConfirmarPassword, validarNome, validarTelefone } from "../../Utils/validadores";
 // Services
@@ -27,7 +27,7 @@ interface CadastroData {
   password: string;
 }
 
-const SignIn = () => {
+const SignUp = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [form, setForm] = useState<IForm>({
@@ -124,4 +124,4 @@ const SignIn = () => {
   );
 };
 
-export default SignIn;
+export default SignUp;
