@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import Login from "../pages/Login/Login";
 import ProtectedRoutes from "./ProtectedRoutes";
 import SignIn from "../pages/SignUp/SignUp";
+import Home from "../pages/Home/Home";
 
 const Routering = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -28,7 +29,7 @@ const Routering = () => {
           element={
             isAuthenticated ? (
               <ProtectedRoutes>
-                <h1>Home</h1>
+                <Home />
               </ProtectedRoutes>
             ) : (
               <Login />

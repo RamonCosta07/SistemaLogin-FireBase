@@ -17,6 +17,12 @@ interface CadastroData {
   password: string;
 }
 
+interface IUsuario {
+  nome: string;
+  telefone: string;
+  uid: string;
+}
+
 export default class UserServices {
   async login(dados: LoginData) {
     try {
@@ -55,6 +61,7 @@ export default class UserServices {
           .collection("usuarios")
           .doc(userCredential.user.uid)
           .set({
+            uid: userCredential.user.uid,
             nome: dados.nome,
             telefone: dados.telefone,
           });
@@ -70,7 +77,21 @@ export default class UserServices {
   usuarioAutenticado() {
     return localStorage.getItem("token") != undefined ? true : false;
   }
-
+  
+  async getUserName(
+    setUserData: React.Dispatch<React.SetStateAction<IUsuario>>
+  ) {
+      const user = firebase.auth().currentUser;
+      if (user) {
+        const userRef = firebase.firestore().collection("usuarios").doc(user.uid);
+        const doc = await userRef.get();
+        if (doc.exists) {
+          const userData = doc.data() as IUsuario;
+          setUserData(userData);
+        }
+      }
+    }
+  
   // implementar uma função que chama ele
   logout() {
     localStorage.clear();

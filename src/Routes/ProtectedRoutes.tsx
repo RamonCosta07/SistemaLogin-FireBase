@@ -9,7 +9,6 @@ interface ProtectedRoutesProps {
 }
 
 const ProtectedRoutes = ({ children }: ProtectedRoutesProps) => {
-  console.log("Children", children);
   const userAuth = userServicie.usuarioAutenticado();
   return userAuth ? <div>{children}</div> : <Routering />;
 };
