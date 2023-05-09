@@ -55,7 +55,7 @@ const SignUp = () => {
       const response = await userService.cadastrar(data);
       if (response) {
         alert("Usuário cadastrado com sucesso, por favor faça o login");
-        navigate("/login");
+        navigate("/");
       }
     } catch (error) {
       alert("Desculpe, algo deu errado no cadastro " + error);
@@ -117,7 +117,7 @@ const SignUp = () => {
         />
         <SubContainerSign>
           <p>Já possui conta?</p>
-          <NavLink to="/login">Entrar</NavLink>
+          <NavLink to="/">Entrar</NavLink>
         </SubContainerSign>
       </Form>
     </Container>

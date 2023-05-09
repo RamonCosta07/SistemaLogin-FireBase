@@ -12,3 +12,7 @@ export interface IInputProps {
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   type: string;
 }
+
+export interface IUserLoggedIn {
+  userLoggedIn: boolean;
+}
