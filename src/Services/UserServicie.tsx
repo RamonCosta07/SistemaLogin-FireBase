@@ -2,26 +2,8 @@ import firebase from "../firebase";
 import "firebase/compat/auth";
 import "firebase/firestore";
 import "firebase/compat/firestore";
-
-interface LoginData {
-  email: string;
-  password: string;
-  nome?: string;
-  telefone?: string;
-}
-
-interface CadastroData {
-  nome: string;
-  email: string;
-  telefone: string;
-  password: string;
-}
-
-interface IUsuario {
-  nome: string;
-  telefone: string;
-  uid: string;
-}
+// Interfaces
+import { IFormSignUp, LoginData, IUsuario } from '../interfaces/interfaceLogin';
 
 export default class UserServices {
   async login(dados: LoginData) {
@@ -42,7 +24,7 @@ export default class UserServices {
     }
   }
 
-  async cadastrar(dados: CadastroData) {
+  async cadastrar(dados: IFormSignUp) {
     try {
       // Cria um novo usuário no Firebase Auth
       const userCredential = await firebase

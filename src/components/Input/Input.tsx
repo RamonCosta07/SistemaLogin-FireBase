@@ -1,11 +1,5 @@
 import { InputCustomizado } from "./inputStyles";
-
-interface IInputProps {
-  name: string;
-  placeholder: string;
-  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  type: string;
-}
+import { IInputProps } from "../../interfaces/interfaceComponents";
 
 const Input = ({ name, placeholder, onChange, type }: IInputProps) => {
   return (

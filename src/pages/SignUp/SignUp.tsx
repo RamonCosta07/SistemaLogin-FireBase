@@ -8,38 +8,32 @@ import Input from "../../components/Input/Input";
 // Styles
 import { Container, Form, SubContainerSign } from "./signUpStyles";
 // Validadores
-import { validarEmail, validarPassword, validarConfirmarPassword, validarNome, validarTelefone } from "../../Utils/validadores";
+import {
+  validarEmail,
+  validarPassword,
+  validarConfirmarPassword,
+  validarNome,
+  validarTelefone,
+} from "../../Utils/validadores";
 // Services
 import UserServices from "../../Services/UserServicie";
 const userService = new UserServices();
 // Interface
-interface IForm {
-  email: string;
-  password: string;
-  nome: string;
-  telefone: string;
-}
-
-interface CadastroData {
-  nome: string;
-  email: string;
-  telefone: string;
-  password: string;
-}
+import { IFormSignUp } from "../../interfaces/interfaceLogin";
 
 const SignUp = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
-  const [form, setForm] = useState<IForm>({
+  const [form, setForm] = useState<IFormSignUp>({
     email: "",
     password: "",
     nome: "",
     telefone: "",
   });
-  const [confirmarPassword, setConfirmarPassword] = useState('');
+  const [confirmarPassword, setConfirmarPassword] = useState("");
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.name === 'confirmarPassword') {
+    if (e.target.name === "confirmarPassword") {
       setConfirmarPassword(e.target.value);
       return;
     }
@@ -52,11 +46,11 @@ const SignUp = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      const data: CadastroData = {
-        nome: form.nome ?? "",
+      const data: IFormSignUp = {
         email: form.email,
-        telefone: form.telefone ?? "",
         password: form.password,
+        nome: form.nome ?? "",
+        telefone: form.telefone ?? "",
       };
       const response = await userService.cadastrar(data);
       if (response) {
@@ -71,7 +65,13 @@ const SignUp = () => {
   };
 
   const validadorInput = () => {
-    return validarEmail(form.email) && validarPassword(form.password) && validarTelefone(form.telefone) && validarNome(form.nome) && validarConfirmarPassword(form.password, confirmarPassword);
+    return (
+      validarEmail(form.email) &&
+      validarPassword(form.password) &&
+      validarTelefone(form.telefone) &&
+      validarNome(form.nome) &&
+      validarConfirmarPassword(form.password, confirmarPassword)
+    );
   };
 
   return (
@@ -110,7 +110,7 @@ const SignUp = () => {
         />
 
         <Button
-          text="Cadastrar"
+          children="Cadastrar"
           type="submit"
           onClick={handleSubmit}
           disabled={loading === true || !validadorInput()}

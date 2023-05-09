@@ -10,11 +10,7 @@ import { Container, Form } from "./homeStyles";
 import UserServices from "../../Services/UserServicie";
 const userService = new UserServices();
 // Interfaces
-interface IUsuario {
-  nome: string;
-  telefone: string;
-  uid: string;
-}
+import { IUsuario } from "../../interfaces/interfaceLogin";
 
 // Firebase
 import firebase from "../../firebase";
@@ -58,7 +54,7 @@ function Home() {
               userData.nome.split(" ")[0].slice(1).toLowerCase()}
           </h1>
           <p>Seu número de telefone é: {userData.telefone}</p>
-          <Button text="Sair" type="button" onClick={logout} disabled={false} />
+          <Button children="Sair" type="button" onClick={logout} disabled={false} bgColor="red" />
         </Form>
       )}
     </Container>

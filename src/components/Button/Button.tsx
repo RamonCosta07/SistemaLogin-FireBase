@@ -1,16 +1,10 @@
 import { ButtonCustomizado } from "./buttonStyles";
+import { IButtonProps } from '../../interfaces/interfaceComponents';
 
-interface IButtonProps {
-  text: string;
-  type: "button" | "submit" | "reset";
-  onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
-  disabled: boolean;
-}
-
-const Button = ({ text, type, onClick, disabled }: IButtonProps) => {
+const Button = ({ children, type, onClick, disabled, bgColor }: IButtonProps) => {
   return (
-    <ButtonCustomizado type={type} onClick={onClick} disabled={disabled}>
-      {text}
+    <ButtonCustomizado type={type} onClick={onClick} disabled={disabled} bgColor={bgColor}>
+      {children}
     </ButtonCustomizado>
   );
 };

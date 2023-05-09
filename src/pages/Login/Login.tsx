@@ -13,15 +13,13 @@ import { validarEmail, validarPassword } from "../../Utils/validadores";
 import UserServices from "../../Services/UserServicie";
 const userService = new UserServices();
 // Interface
-interface IForm {
-  email: string;
-  password: string;
-}
+import { IFormLogin } from '../../interfaces/interfaceLogin';
+
 
 const Login = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
-  const [form, setForm] = useState<IForm>({
+  const [form, setForm] = useState<IFormLogin>({
     email: "",
     password: "",
   });
@@ -70,7 +68,7 @@ const Login = () => {
         />
 
         <Button
-          text="Entrar"
+          children="Entrar"
           type="button"
           onClick={handleSubmit}
           disabled={loading === true || !validadorInput()}

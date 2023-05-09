@@ -1,10 +1,11 @@
 import styled from "styled-components";
+import { IButtonProps } from '../../interfaces/interfaceComponents';
 
-export const ButtonCustomizado = styled.button`
+export const ButtonCustomizado = styled.button<IButtonProps>`
   color: #fff;
   font-size: 20px;
   border: 30px;
-  background-color: #6a6a6a;
+  background-color: ${(props) => props.bgColor || "#6a6a6a"};
   border-radius: 8px;
   width: 100%;
   height: 50px;
